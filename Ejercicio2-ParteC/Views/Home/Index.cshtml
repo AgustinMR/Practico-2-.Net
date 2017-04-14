@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Alta de Empleado</title>
+    <link href="~/Content/w3.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="~/Scripts/jquery-3.2.0.min.js"></script>
+</head>
+<body style="background-image: url(../../Content/ub.png); background-attachment: fixed; background-size: cover">
+    <div class="w3-row w3-light-grey w3-card-4 w3-opacity"><h1 class="w3-margin w3-text-dark-grey"><strong>TSI</strong> - Practico 2</h1></div>
+    <div class="w3-container w3-displa">
+        <div class="w3-content w3-card-2">
+            <div class="w3-panel w3-white">
+                <h2 class="w3-text-blue-grey w3-padding">Alta de Empleado</h2><hr />
+                <div class="w3-container w3-padding w3-margin">
+                    <label><strong>Nombre:</strong></label>
+                    <input id="name" type="text" class="w3-input w3-bottombar w3-light-gray w3-hover-border-gray w3-round w3-margin-bottom">
+                    <label><strong>Fecha de Inicio:</strong></label>
+                    <input id="startDate" type="date" class="w3-input w3-bottombar w3-light-gray w3-round w3-margin-bottom w3-hover-border-gray">
+                    <label><strong>Tipo de Contrato:</strong></label><br />
+                    <select id="select" class="w3-select w3-light-gray w3-hover-border-gray w3-bottombar w3-margin-bottom w3-round">
+                        <option value="full">Full Time Employee</option>
+                        <option value="part">Part Time Employee</option>
+                    </select>
+                    <label id="lbs"><strong>Salario:</strong></label><br />
+                    <input id="salary" type="number" class="w3-input w3-bottombar w3-light-gray w3-hover-border-gray w3-round">
+                    <label id="lbh" style="display: none"><strong>Pago/Hora:</strong></label><br />
+                    <input id="hourlyrate" type="text" class="w3-input w3-bottombar w3-light-gray w3-hover-border-gray w3-round w3-margin-bottom" style="display: none">
+                    <input type="button" onclick="AddEmployee();" class="w3-button w3-right w3-bottombar w3-card-4 w3-dark-grey w3-hover-dark-grey w3-hover-border-gray w3-round w3-margin-bottom" value="INGRESAR">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var select = document.getElementById("select");
+        select.onchange = function () {
+            if (select.value === "part") {
+                document.getElementById("lbs").style.display = "none";
+                document.getElementById("salary").style.display = "none";
+                document.getElementById("lbh").style.display = "block";
+                document.getElementById("hourlyrate").style.display = "block";
+            }
+            else {
+                document.getElementById("lbs").style.display = "block";
+                document.getElementById("salary").style.display = "block";
+                document.getElementById("lbh").style.display = "none";
+                document.getElementById("hourlyrate").style.display = "none";
+            }
+        };
+        function AddEmployee() {
+            var employee;
+            if (select.value === "full") {
+                $.post("http://localhost:49222/api/employees/full?" + "Name=" + document.getElementById("name").value + "&StartDate=" + document.getElementById("startDate").value + "&Salary=" + document.getElementById("salary").value);
+            }
+            else {
+                $.post("http://localhost:49222/api/employees/part?" + "Name=" + document.getElementById("name").value + "&StartDate=" + document.getElementById("startDate").value + "&HourlyRate=" + document.getElementById("hourlyRate").value);
+            }
+        };
+    </script>
+</body>
+</html>

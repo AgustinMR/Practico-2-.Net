@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Practico1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EmployeesTPH">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="Int32" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SALARY" Type="Int32" />
+    <Property Name="RATE" Type="Double" />
+    <Property Name="TYPE_EMP" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Practico1Model.EmployeeEmployeesTPH" FromRole="EmployeesTPH" ToRole="Employee" />
+  </EntityType>
+  <EntityContainer Name="Practico1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EmployeesTPHs" EntityType="Practico1Model.EmployeesTPH" />
+    <EntitySet Name="Employees" EntityType="Practico1Model.Employee" />
+    <AssociationSet Name="EmployeeEmployeesTPH" Association="Practico1Model.EmployeeEmployeesTPH">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeesTPH" EntitySet="EmployeesTPHs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee" Abstract="true">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" />
+    <Property Name="TypeEmp" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EmployeesTPH" Relationship="Practico1Model.EmployeeEmployeesTPH" FromRole="Employee" ToRole="EmployeesTPH" />
+  </EntityType>
+  <EntityType Name="PartTimeEmployee" BaseType="Practico1Model.Employee">
+    <Property Name="HourlyRate" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FullTimeEmployee" BaseType="Practico1Model.Employee">
+    <Property Name="Salary" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeeEmployeesTPH">
+    <End Type="Practico1Model.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Practico1Model.EmployeesTPH" Role="EmployeesTPH" Multiplicity="1" />
+  </Association>
+</Schema>

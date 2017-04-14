@@ -1,0 +1,19 @@
+﻿<div class="w3-col s12 m12 w3-light-grey l12 w3-right w3-card-4 w3-panel w3-opacity-min w3-round w3-bottombar w3-border-gray">
+    <h3 class="w3-margin-top w3-margin-left w3-text-red w3-greyscale-min w3-left w3-margin-bottom">Empleado Nuevo</h3><hr />
+    <div class="w3-container w3-padding w3-margin">
+        <label><strong>Nombre:</strong></label>
+        <input type="text" [(ngModel)]="Name" class="w3-input w3-bottombar w3-hover-border-red w3-greyscale-min w3-round w3-margin-bottom">
+        <label><strong>Start Date:</strong></label>
+        <input type="datetime" [(ngModel)]="StartDate" class="w3-input w3-bottombar w3-hover-border-red w3-greyscale-min w3-round w3-margin-bottom">
+        <label><strong>Tipo de Contrato:</strong></label><br />
+        <select id="select" class="w3-select w3-bottombar w3-hover-border-red w3-greyscale-min w3-round w3-margin-bottom" (change)="changeCurrentEmployeeType()">
+            <option value="full">Full Time Employee</option>
+            <option value="part">Part Time Employee</option>
+        </select>
+        <label id="lbs" *ngIf="isFullTime"><strong>Salario:</strong></label><br />
+        <input id="salary" [(ngModel)]="Salary" type="number" class="w3-input w3-bottombar w3-hover-border-red w3-greyscale-min w3-round" *ngIf="isFullTime">
+        <label id="lbh" *ngIf="!isFullTime"><strong>Pago/Hora:</strong></label><br />
+        <input id="hourlyrate" [(ngModel)]="HourlyRate" type="text" class="w3-input w3-bottombar w3-hover-border-red w3-greyscale-min w3-round w3-margin-bottom" *ngIf="!isFullTime">
+        <input type="button" class="w3-button w3-right w3-bottombar w3-card-4 w3-dark-grey w3-hover-dark-grey w3-hover-border-red w3-round w3-margin-bottom w3-greyscale-min" value="INGRESAR" (click)="AddEmployee()">
+    </div>
+</div>

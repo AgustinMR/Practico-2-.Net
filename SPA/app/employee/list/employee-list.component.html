@@ -1,0 +1,26 @@
+﻿<div class="w3-col s12 m12 w3-light-grey l12 w3-right w3-card-4 w3-panel w3-opacity-min w3-round w3-bottombar w3-border-gray">
+    <h3 class="w3-margin-top w3-margin-left w3-text-red w3-greyscale-min w3-left w3-margin-bottom">Listado de Empleados</h3><hr />
+    <input class="w3-input w3-bottombar w3-white w3-margin-top w3-margin-left w3-round" style="width: 95%" placeholder="Aplique un filtro...">
+    <table class="w3-table w3-striped w3-bordered w3-margin-bottom w3-margin-left w3-responsive w3-card-2 w3-round" style="width: 95%">
+        <thead>
+            <tr>
+                <td><strong>Employee ID</strong></td>
+                <td><strong>Nombre</strong></td>
+                <td><strong>Start Date</strong></td>
+                <td><strong>Salary</strong></td>
+                <td><strong>Hourly Rate</strong></td>
+                <td><strong>Emp. Type</strong></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees">
+                <td>{{emp.EmployeeId}}</td>
+                <td>{{emp.Name}}</td>
+                <td>{{emp.StartDate}}</td>
+                <td>{{emp.Salary}}</td>
+                <td>{{emp.HourlyRate}}</td>
+                <td>{{emp.empType}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
