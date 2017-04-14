@@ -4,6 +4,7 @@ using EmployeeHubNamespace;
 using Microsoft.AspNet.SignalR;
 using Serilog;
 using Serilog.Core;
+using Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,88 +15,49 @@ using System.Web.Http;
 
 namespace ServiceLayerREST.Controllers
 {
-    [RoutePrefix("tasks")]
+    [RoutePrefix("tasks/employees")]
     public class EmployeeTaskController : ApiController
     {
         private IHubContext context;
-
-        private ChannelName channel = ChannelName.USUARIO_CONECTADO;
 
         public EmployeeTaskController()
         {
             context = GlobalHost.ConnectionManager.GetHubContext<EmployeeHub>();
         }
 
+        [Route("")]
+        [HttpPost]
+        public IHttpActionResult AddEmployeeEvent([FromUri]Employee e)
+        {
+            PublishEvent(ChannelName.EMPLEADO_NUEVO, e);
+            return Ok();
+        }
 
-        [Route("long")]
+        [Route("")]
         [HttpGet]
-        public IHttpActionResult GetLongTask()
+        public IHttpActionResult UserConnectedTask()
         {
-            Log.Information("Starting long task");
-
-            double steps = 10;
-            var eventName = "longTask.status";
-
-            ExecuteTask(eventName, steps);
-
-            return Ok("Long task complete");
+            PublishEvent(ChannelName.USUARIO_CONECTADO);
+            return Ok();
         }
 
-
-
-        [Route("short")]
-        [HttpGet]
-        public IHttpActionResult GetShortTask()
+        private void PublishEvent(ChannelName c)
         {
-            Log.Information("Starting short task");
-
-            double steps = 5;
-            var eventName = "shortTask.status";
-
-            ExecuteTask(eventName, steps);
-
-            return Ok("Short task complete");
+            context.Clients.Group(c.ToString()).OnEvent(c, new EventMessage
+            {
+                channel = c,
+                Data = c.ToString()
+            });
         }
 
-        private void ExecuteTask(string eventName, double steps)
+        private void PublishEvent(ChannelName c, Employee e)
         {
-            var status = new Status
+            context.Clients.Group(c.ToString()).OnEvent(c, new EventMessage
             {
-                State = "starting",
-                PercentComplete = 0.0
-            };
-
-            PublishEvent(eventName, status);
-
-            for (double i = 0; i < steps; i++)
-            {
-                status.State = "working";
-                status.PercentComplete = (i / steps) * 100;
-                PublishEvent(eventName, status);
-
-                Thread.Sleep(500);
-            }
-
-            status.State = "complete";
-            status.PercentComplete = 100;
-            PublishEvent(eventName, status);
-        }
-
-        private void PublishEvent(string eventName, Status status)
-        {
-            context.Clients.Group(channel.ToString()).OnEvent(ChannelName.USUARIO_CONECTADO, new EventMessage
-            {
-                channel = ChannelName.USUARIO_CONECTADO,
-                Data = status
+                channel = c,
+                Data = e
             });
         }
     }
 
-
-    public class Status
-    {
-        public string State { get; set; }
-
-        public double PercentComplete { get; set; }
-    }
 }

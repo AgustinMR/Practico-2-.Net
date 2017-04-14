@@ -49,16 +49,7 @@ namespace EmployeeHubNamespace
         public Task Publish(EventMessage channelEvent)
         {
             Clients.Group(channelEvent.channel.ToString()).OnEvent(channelEvent.channel, channelEvent);
-
             Clients.Group(ChannelName.USUARIO_CONECTADO.ToString()).OnEvent(ChannelName.USUARIO_CONECTADO, channelEvent);
-            /*
-            if (channelEvent.ChannelName != Constants.AdminChannel)
-            {
-                // Push this out on the admin channel
-                //
-                Clients.Group(Constants.AdminChannel).OnEvent(Constants.AdminChannel, channelEvent);
-            }*/
-
             return Task.FromResult(0);
         }
 
