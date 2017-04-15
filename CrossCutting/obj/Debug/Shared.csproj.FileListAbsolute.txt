@@ -24,3 +24,16 @@ C:\Users\Agustin\Documents\PracticoTSI2\CrossCutting\bin\Debug\MongoDB.Driver.Co
 C:\Users\Agustin\Documents\PracticoTSI2\CrossCutting\obj\Debug\Shared.dll
 C:\Users\Agustin\Documents\PracticoTSI2\CrossCutting\obj\Debug\Shared.pdb
 C:\Users\Agustin\Documents\PracticoTSI2\CrossCutting\obj\Debug\Shared.csprojResolveAssemblyReference.cache
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\Shared.dll.config
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\Shared.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\Shared.pdb
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\MongoDB.Bson.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\MongoDB.Driver.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\MongoDB.Bson.xml
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\MongoDB.Driver.xml
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\obj\Debug\Shared.csprojResolveAssemblyReference.cache
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\obj\Debug\Shared.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\CrossCutting\obj\Debug\Shared.pdb

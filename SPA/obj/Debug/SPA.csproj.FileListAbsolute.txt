@@ -32,3 +32,37 @@ C:\Users\Agustin\Documents\Visual Studio 2017\Projects\AplicacionSPA\SPA\bin\Mic
 C:\Users\Agustin\Documents\Visual Studio 2017\Projects\AplicacionSPA\SPA\obj\Debug\SPA.dll
 C:\Users\Agustin\Documents\Visual Studio 2017\Projects\AplicacionSPA\SPA\obj\Debug\SPA.pdb
 C:\Users\Agustin\Documents\Visual Studio 2017\Projects\AplicacionSPA\SPA\obj\Debug\SPA.csprojResolveAssemblyReference.cache
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\csc.exe
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\csc.exe.config
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\csc.rsp
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\csi.exe
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\csi.rsp
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\System.AppContext.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\vbc.exe
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\vbc.exe.config
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\vbc.rsp
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\VBCSCompiler.exe
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\SPA.dll.config
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\SPA.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\SPA.pdb
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\obj\Debug\SPA.csprojResolveAssemblyReference.cache
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\obj\Debug\SPA.dll
+C:\Users\Agustin\Desktop\Practico2-TSI1-Gr17\SPA\obj\Debug\SPA.pdb

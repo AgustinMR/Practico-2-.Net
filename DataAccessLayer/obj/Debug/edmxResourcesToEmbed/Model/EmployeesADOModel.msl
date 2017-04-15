@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PracticoTSI1StoreContainer" CdmEntityContainer="EmployeesConnectionString">
+    <EntitySetMapping Name="EmployeesTPH">
+      <EntityTypeMapping TypeName="IsTypeOf(PracticoTSI1.Employee)">
+        <MappingFragment StoreEntitySet="EmployeesTPH">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMP_ID" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(PracticoTSI1.PartTimeEmployee)">
+        <MappingFragment StoreEntitySet="EmployeesTPH">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMP_ID" />
+          <ScalarProperty Name="HourlyRate" ColumnName="RATE" />
+          <Condition ColumnName="TYPE_EMP" Value="1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(PracticoTSI1.FullTimeEmployee)">
+        <MappingFragment StoreEntitySet="EmployeesTPH">
+          <ScalarProperty Name="EmployeeId" ColumnName="EMP_ID" />
+          <ScalarProperty Name="Salary" ColumnName="SALARY" />
+          <Condition ColumnName="TYPE_EMP" Value="0" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
