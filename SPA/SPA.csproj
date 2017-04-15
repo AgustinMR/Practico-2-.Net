@@ -67,13 +67,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\employee\task-new-employee\employee-task-new-employee.component.css" />
+    <Content Include="app\employee\task-new-employee\employee-task-new-employee.component.html" />
     <Content Include="app\employee\task\employee-task.component.css" />
     <Content Include="app\employee\task\employee-task.component.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include=".bin\git.cmd" />
     <None Include=".bin\node.cmd" />
     <Content Include="app\app.component.css" />
     <Content Include="tsconfig.json" />
+    <None Include=".bin\npm.cmd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -114,6 +118,7 @@
     <TypeScriptCompile Include="app\employee\employee.task.service.ts" />
     <TypeScriptCompile Include="app\employee\list\employee-list.component.ts" />
     <TypeScriptCompile Include="app\employee\manage\manage-employee.component.ts" />
+    <TypeScriptCompile Include="app\employee\task-new-employee\employee-task-new-employee.component.ts" />
     <TypeScriptCompile Include="app\employee\task\employee-task.component.ts" />
     <TypeScriptCompile Include="main.ts" />
   </ItemGroup>

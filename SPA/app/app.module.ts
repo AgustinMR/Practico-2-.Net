@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './employee/list/employee-list.component';
 import { ManageEmployeeComponent } from './employee/manage/manage-employee.component';
 import { EmployeeTaskCompontent } from './employee/task/employee-task.component'
+import { EmployeeTaskNewEmployeeCompontent } from './employee/task-new-employee/employee-task-new-employee.component'
 import { EmployeeService } from './employee/employee.service';
 import { EmployeeTaskService, ChannelConfig, SignalrWindow } from './employee/employee.task.service';
 

@@ -21,17 +21,28 @@ export class EmployeeTaskCompontent implements OnInit {
         //
         this.channelService.sub(this.channel).subscribe(
             (x: EventMessage) => {
+                alert();
                 console.log(x);
             },
             (error: any) => {
                 console.warn("Attempt to join channel failed!", error);
             }
         )
+        this.callApi();
     }
 
     callApi() {
         this.http.get(this.apiUrl)
             .map((res: Response) => res.json())
-            .subscribe((message: string) => { console.log(message); }, error => console.log("Ha ocurrido un error, y fue culpa de git. :/"), () => console.log("Sha la la, Sha la la"));
+            .subscribe((message: string) => { console.log(message); });
     }
+
+    hayEvento = false;
+
+    showNotification() {
+        this.hayEvento = true;
+        
+        this.hayEvento = false;
+    }
+
 }

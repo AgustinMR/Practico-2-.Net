@@ -30,7 +30,7 @@ namespace ServiceLayerREST.Controllers
         public IHttpActionResult AddEmployeeEvent([FromUri]Employee e)
         {
             PublishEvent(ChannelName.EMPLEADO_NUEVO, e);
-            return Ok();
+            return Ok("AAAAAAAAA");
         }
 
         [Route("")]
@@ -38,7 +38,7 @@ namespace ServiceLayerREST.Controllers
         public IHttpActionResult UserConnectedTask()
         {
             PublishEvent(ChannelName.USUARIO_CONECTADO);
-            return Ok();
+            return Ok("aaaaaaaaaaaaaaaaaaa");
         }
 
         private void PublishEvent(ChannelName c)
