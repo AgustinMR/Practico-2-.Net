@@ -14,10 +14,11 @@ namespace EmployeeHubNamespace
         public async Task Subscribe(string c)
         {
             await Groups.Add(Context.ConnectionId, c);
-
+            Console.WriteLine("====> Nueva Suscripcion | Id: " + Context.ConnectionId + " --- Channel: " + c);
             var ev = new EventMessage
             {
                 channel = c,
+                Name = "user.subscribed",
                 Data = new
                 {
                     Context.ConnectionId,
@@ -35,6 +36,7 @@ namespace EmployeeHubNamespace
             var ev = new EventMessage
             {
                 channel = c,
+                Name = "user.unsubscribed",
                 Data = new
                 {
                     Context.ConnectionId,
@@ -59,6 +61,7 @@ namespace EmployeeHubNamespace
             var ev = new EventMessage
             {
                 channel = "USUARIO_CONECTADO",
+                Name = "user.connected",
                 Data = new
                 {
                     Context.ConnectionId,
@@ -76,6 +79,7 @@ namespace EmployeeHubNamespace
             var ev = new EventMessage
             {
                 channel = "USUARIO_DESCONECTADO",
+                Name = "user.disconnected",
                 Data = new
                 {
                     Context.ConnectionId,

@@ -1,7 +1,7 @@
 ﻿import { OnInit, Input, Component } from "@angular/core";
 import { Http, HttpModule, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { EmployeeTaskService, EventMessage } from "../employee.task.service";
+import { EmployeeTaskService, ChannelEvent } from "../employee.task.service";
 
 @Component({
     selector: 'tsi1-employee-task',
@@ -13,36 +13,64 @@ import { EmployeeTaskService, EventMessage } from "../employee.task.service";
 export class EmployeeTaskCompontent implements OnInit {
     @Input() apiUrl: string;
     @Input() channel: string;
-    eventName = "USUARIO_CONECTADO";
+    eventName = "user.connected";
     hayEvento = false;
-     
-    constructor( private http: Http, private channelService: EmployeeTaskService ) { }
+
+    messages = "";
+
+    constructor(
+        private http: Http,
+        private channelService: EmployeeTaskService
+    ) {
+
+    }
 
     ngOnInit() {
-        this.callApi();
-        /*this.channelService.sub(this.channel).subscribe(
-            (x: EventMessage) => {
-                alert();
-                switch (x.ChannelName) {
-                    case this.eventName: { this.showNotification(); }; break;
+        // Get an observable for events emitted on this channel
+        //
+        this.channelService.sub(this.channel).subscribe(
+            (x: ChannelEvent) => {
+                switch (x.Name) {
+                    case this.eventName:
+                        {
+                            alert();
+                            this.appendStatusUpdate(x);
+                        }
                 }
             },
             (error: any) => {
-                console.warn("Error al unirse al canal!", error);
+                console.warn("Attempt to join channel failed!", error);
             }
-        )*/
+        )
+    }
 
-        this.channelService.sub(this.channel).subscribe(
-            response => alert(response.Json),
-            (error: Response) => console.log("Ha ocurrido un error. {error}", error.json()),
-            () => alert("Sub method completed")
-        );
+
+    private appendStatusUpdate(ev: ChannelEvent): void {
+        // Just prepend this to the messages string shown in the textarea
+        //
+        let date = new Date();
+        switch (ev.Data.State) {
+            case "starting": {
+                this.messages = `${date.toLocaleTimeString()} : starting\n` + this.messages;
+                break;
+            }
+
+            case "complete": {
+                this.messages = `${date.toLocaleTimeString()} : complete\n` + this.messages;
+                break;
+            }
+
+            default: {
+                this.messages = `${date.toLocaleTimeString()} : ${ev.Data.State} : ${ev.Data.PercentComplete} % complete\n` + this.messages;
+            }
+        }
+        console.log(this.messages);
     }
 
     callApi() {
         this.http.get(this.apiUrl)
             .map((res: Response) => res.json())
-            .subscribe((message: string) => { console.log(message); }, error => console.log("Ha ocurrido un error... {error}", error), () => console.log("callApi Method completed."));
+            .subscribe((message: string) => { console.log(message); });
     }
 
     showNotification() {

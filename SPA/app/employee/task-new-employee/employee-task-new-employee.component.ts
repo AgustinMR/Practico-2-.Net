@@ -1,7 +1,7 @@
 ﻿import { OnInit, Input, Component } from "@angular/core";
 import { Http, HttpModule, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { EmployeeTaskService, EventMessage } from "../employee.task.service";
+import { EmployeeTaskService, ChannelEvent } from "../employee.task.service";
 
 @Component({
     selector: 'tsi1-task-new-employee',
@@ -20,7 +20,7 @@ export class EmployeeTaskNewEmployeeCompontent implements OnInit {
         // Get an observable for events emitted on this channel
         //
         this.channelService.sub(this.channel).subscribe(
-            (x: EventMessage) => {
+            (x: ChannelEvent) => {
                 alert();
                 console.log(x);
             },

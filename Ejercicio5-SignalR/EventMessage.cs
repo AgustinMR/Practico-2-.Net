@@ -14,6 +14,8 @@ namespace ChannelMessage
 
         public DateTimeOffset Timestamp { get; set; }
 
+        public string Name { get; set; }
+
         public object Data
         {
             get { return _data; }
