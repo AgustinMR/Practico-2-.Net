@@ -34,6 +34,7 @@ export class EmployeeTaskCompontent implements OnInit {
     callApi() {
         this.http.get(this.apiUrl)
             .map((res: Response) => res.json())
+
             .subscribe((message: string) => { console.log(message); });
     }
 
