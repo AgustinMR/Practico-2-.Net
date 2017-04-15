@@ -19,8 +19,8 @@ export class EmployeeTaskCompontent implements OnInit {
     constructor( private http: Http, private channelService: EmployeeTaskService ) { }
 
     ngOnInit() {
-
-        this.channelService.sub(this.channel).subscribe(
+        this.callApi();
+        /*this.channelService.sub(this.channel).subscribe(
             (x: EventMessage) => {
                 alert();
                 switch (x.ChannelName) {
@@ -30,20 +30,24 @@ export class EmployeeTaskCompontent implements OnInit {
             (error: any) => {
                 console.warn("Error al unirse al canal!", error);
             }
-        )
+        )*/
+
+        this.channelService.sub(this.channel).subscribe(
+            response => alert(response.Json),
+            (error: Response) => console.log("Ha ocurrido un error. {error}", error.json()),
+            () => alert("Sub method completed")
+        );
     }
 
     callApi() {
         this.http.get(this.apiUrl)
             .map((res: Response) => res.json())
-
-            .subscribe((message: string) => { console.log(message); });
+            .subscribe((message: string) => { console.log(message); }, error => console.log("Ha ocurrido un error... {error}", error), () => console.log("callApi Method completed."));
     }
 
     showNotification() {
         this.hayEvento = true;
-        alert();
-        this.hayEvento = false;
+        setTimeout(() => { this.hayEvento = false; }, 300);
     }
 
 }
