@@ -19,14 +19,13 @@ export class EmployeeTaskService {
 
     private hubConnection: any;
     private hubProxy: any;
-
+    
     private subjects = new Array<ChannelSubject>();
 
     constructor( @Inject(SignalrWindow) private window: SignalrWindow,  @Inject("channel.config") private channelConfig: ChannelConfig ) {
         if (this.window.$ === undefined || this.window.$.hubConnection === undefined) {
             throw new Error("The variable '$' or the .hubConnection() function are not defined...please check the SignalR scripts have been loaded properly");
         }
-
         this.connectionState = this.connectionStateSubject.asObservable();
         this.error = this.errorSubject.asObservable();
         this.isReady = this.startingSubject.asObservable();

@@ -1,18 +1,19 @@
-﻿import { Component, OnInit, Input } from "@angular/core";
-import { Http, Response } from "@angular/http";
-
+﻿import { OnInit, Input, Component } from "@angular/core";
+import { Http, HttpModule, Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 import { EmployeeTaskService, EventMessage } from "../employee.task.service";
 
 @Component({
     selector: 'tsi1-employee-task',
     templateUrl: 'employee-task.component.html',
-    styleUrls: ['employee-task.component.css']
+    styleUrls: ['employee-task.component.css'],
+    moduleId: module.id,
+    providers: [EmployeeTaskService]
 })
 export class EmployeeTaskCompontent implements OnInit {
-    @Input() eventName: string;
     @Input() apiUrl: string;
     @Input() channel: string;
-
+     
     constructor( private http: Http, private channelService: EmployeeTaskService ) { }
 
     ngOnInit() {
