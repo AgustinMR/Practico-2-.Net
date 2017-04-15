@@ -1,17 +1,19 @@
 ﻿import { Component } from '@angular/core';
-import { EmployeeTaskService, ConnectionState } from "./employee/employee.task.service";
+import { EmployeeTaskService, ConnectionState, ChannelEvent } from "./employee/employee.task.service";
 import { Observable } from "rxjs/Observable";
 
 @Component({
     selector: 'tsi1',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
-    moduleId: module.id
+    moduleId: module.id,
+    providers: [EmployeeTaskService]
 })
 export class AppComponent {
 
     showTable = false;
     showOtro = false;
+    hayEvento = false;
 
     toggleShowTable() {
         this.showTable = true;
@@ -21,6 +23,11 @@ export class AppComponent {
     toggleShowOtro() {
         this.showOtro = true;
         this.showTable = false;
+    }
+
+    showNotification() {
+        this.hayEvento = true;
+        setTimeout(() => { this.hayEvento = false; }, 300);
     }
 
     connectionState$: Observable<string>;
@@ -54,6 +61,14 @@ export class AppComponent {
         console.log("Starting the channel service");
 
         this.channelService.start();
-        this.channelService.sub("USUARIO_CONECTADO").map(response => alert(response.Json));
+        this.channelService.sub("USUARIO_CONECTADO").map(response => {
+            switch (response.Name) {
+                case "user.connected":
+                    {
+                        alert();
+                        this.showNotification();
+                    }
+            }
+        });
     }
 }

@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <tsi1-employee-task [channel]="'USUARIO_CONECTADO'" [apiUrl]="'http://localhost:9123/tasks/employees'"></tsi1-employee-task>
+    <tsi1-employee-task [channel]="'USUARIO_CONECTADO'" [apiUrl]="'http://localhost:9123/tasks/employees'" *ngIf="hayEvento"></tsi1-employee-task>
     <div class="w3-content w3-container" id="main">
         <tsi1-employee-list *ngIf="showTable"></tsi1-employee-list>
         <tsi1-employee-manage *ngIf="showOtro"></tsi1-employee-manage>

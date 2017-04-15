@@ -1,6 +1,7 @@
 ﻿import { Injectable, Inject } from "@angular/core";
 import { Subject } from "rxjs/Subject";
 import { Observable } from "rxjs/Observable";
+import { Http, HttpModule, Response } from '@angular/http';
 
 /**
  * When SignalR runs it will add functions to the global $ variable 

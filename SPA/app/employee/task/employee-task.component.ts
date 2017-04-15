@@ -14,7 +14,6 @@ export class EmployeeTaskCompontent implements OnInit {
     @Input() apiUrl: string;
     @Input() channel: string;
     eventName = "user.connected";
-    hayEvento = false;
 
     messages = "";
 
@@ -41,7 +40,7 @@ export class EmployeeTaskCompontent implements OnInit {
             (error: any) => {
                 console.warn("Attempt to join channel failed!", error);
             }
-        )
+        );
     }
 
 
@@ -71,11 +70,6 @@ export class EmployeeTaskCompontent implements OnInit {
         this.http.get(this.apiUrl)
             .map((res: Response) => res.json())
             .subscribe((message: string) => { console.log(message); });
-    }
-
-    showNotification() {
-        this.hayEvento = true;
-        setTimeout(() => { this.hayEvento = false; }, 300);
     }
 
 }
