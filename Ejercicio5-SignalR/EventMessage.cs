@@ -10,7 +10,7 @@ namespace ChannelMessage
     public class EventMessage
     {
 
-        public ChannelName channel { get; set; }
+        public string channel { get; set; }
 
         public DateTimeOffset Timestamp { get; set; }
 

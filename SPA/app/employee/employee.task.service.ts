@@ -114,11 +114,13 @@ export class EmployeeTaskService {
                     console.log(`Successfully subscribed to ${channel} channel`);
                 })
                 .fail((error: any) => {
-                    channelSub.subject.error(error);
+                    //channelSub.subject.error(error);
+                    console.log("No se ha podido subscribir al canal. {error}", error);
                 });
         },
             (error: any) => {
-                channelSub.subject.error(error);
+                //channelSub.subject.error(error);
+                console.log("Error en mostrar el error. {error}", error);
             });
 
         return channelSub.subject.asObservable();

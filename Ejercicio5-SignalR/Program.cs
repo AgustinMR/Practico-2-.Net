@@ -27,7 +27,8 @@ namespace Ejercicio5_SignalR
                 eventHubProxy.On<string, EventMessage>("OnEvent", (channel, ev) => Log.Information("Event received on {channel} channel - {@ev}", channel, ev));
                 hubConnection.Start().Wait();
 
-                eventHubProxy.Invoke("Subscribe", ChannelName.USUARIO_CONECTADO);
+                eventHubProxy.Invoke("Subscribe", "USUARIO_CONECTADO");
+                eventHubProxy.Invoke("Subscribe", "EMPLEADO_NUEVO");
 
                 Console.WriteLine($"Server is running on {baseAddress}");
                 Console.WriteLine("Press <enter> to stop server");

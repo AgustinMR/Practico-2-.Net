@@ -13,22 +13,24 @@ import { EmployeeTaskService, EventMessage } from "../employee.task.service";
 export class EmployeeTaskCompontent implements OnInit {
     @Input() apiUrl: string;
     @Input() channel: string;
+    eventName = "USUARIO_CONECTADO";
+    hayEvento = false;
      
     constructor( private http: Http, private channelService: EmployeeTaskService ) { }
 
     ngOnInit() {
-        // Get an observable for events emitted on this channel
-        //
+
         this.channelService.sub(this.channel).subscribe(
             (x: EventMessage) => {
                 alert();
-                console.log(x);
+                switch (x.ChannelName) {
+                    case this.eventName: { this.showNotification(); }; break;
+                }
             },
             (error: any) => {
-                console.warn("Attempt to join channel failed!", error);
+                console.warn("Error al unirse al canal!", error);
             }
         )
-        this.callApi();
     }
 
     callApi() {
@@ -38,11 +40,9 @@ export class EmployeeTaskCompontent implements OnInit {
             .subscribe((message: string) => { console.log(message); });
     }
 
-    hayEvento = false;
-
     showNotification() {
         this.hayEvento = true;
-        
+        alert();
         this.hayEvento = false;
     }
 

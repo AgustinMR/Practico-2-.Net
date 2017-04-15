@@ -29,7 +29,7 @@ namespace ServiceLayerREST.Controllers
         [HttpPost]
         public IHttpActionResult AddEmployeeEvent([FromUri]Employee e)
         {
-            PublishEvent(ChannelName.EMPLEADO_NUEVO, e);
+            PublishEvent("EMPLEADO_NUEVO", e);
             return Ok("AAAAAAAAA");
         }
 
@@ -37,22 +37,22 @@ namespace ServiceLayerREST.Controllers
         [HttpGet]
         public IHttpActionResult UserConnectedTask()
         {
-            PublishEvent(ChannelName.USUARIO_CONECTADO);
+            PublishEvent("USUARIO_CONECTADO");
             return Ok("aaaaaaaaaaaaaaaaaaa");
         }
 
-        private void PublishEvent(ChannelName c)
+        private void PublishEvent(string c)
         {
-            context.Clients.Group(c.ToString()).OnEvent(c, new EventMessage
+            context.Clients.Group(c).OnEvent(c, new EventMessage
             {
                 channel = c,
                 Data = c.ToString()
             });
         }
 
-        private void PublishEvent(ChannelName c, Employee e)
+        private void PublishEvent(string c, Employee e)
         {
-            context.Clients.Group(c.ToString()).OnEvent(c, new EventMessage
+            context.Clients.Group(c).OnEvent(c, new EventMessage
             {
                 channel = c,
                 Data = e
