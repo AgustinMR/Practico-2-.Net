@@ -30,15 +30,15 @@ namespace ServiceLayerREST.Controllers
         public IHttpActionResult AddEmployeeEvent([FromUri]Employee e)
         {
             PublishEvent("EMPLEADO_NUEVO", "employee.added", e);
-            return Ok("AAAAAAAAA");
+            return Ok();
         }
 
         [Route("")]
         [HttpGet]
         public IHttpActionResult UserConnectedTask()
         {
-            PublishEvent("USUARIO_CONECTADO", "user.connected");
-            return Ok("aaaaaaaaaaaaaaaaaaa");
+            PublishEvent("USUARIO_CONECTADO", "user.registred");
+            return Ok();
         }
 
         private void PublishEvent(string c, string n)

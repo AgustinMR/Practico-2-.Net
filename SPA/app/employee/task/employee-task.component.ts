@@ -27,26 +27,31 @@ export class EmployeeTaskCompontent implements OnInit {
     ngOnInit() {
         // Get an observable for events emitted on this channel
         //
-        this.channelService.sub(this.channel).subscribe(
+        /*this.channelService.sub(this.channel).subscribe(
             (x: ChannelEvent) => {
-                switch (x.Name) {
-                    case this.eventName:
-                        {
-                            alert();
-                            this.appendStatusUpdate(x);
-                        }
+                if (x.Name === "user.subscribed") {
+                    alert();
+                    this.appendStatusUpdate(x);
                 }
             },
             (error: any) => {
                 console.warn("Attempt to join channel failed!", error);
             }
-        );
+        );*/
+        /*alert(this.channelService.starting$);
+        this.channelService.sub("USUARIO_CONECTADO").map(response => {
+            alert(response);
+            if (response.Name === "user.subscribed") {
+                alert();
+            }
+        }).subscribe(response => console.log("incomming message at USUARIO_CONECTADO channel with Name:", response), error => console.log("Ha ocurrido un error: ", error), () => { });*/
     }
 
 
     private appendStatusUpdate(ev: ChannelEvent): void {
         // Just prepend this to the messages string shown in the textarea
         //
+        alert();
         let date = new Date();
         switch (ev.Data.State) {
             case "starting": {
@@ -63,7 +68,6 @@ export class EmployeeTaskCompontent implements OnInit {
                 this.messages = `${date.toLocaleTimeString()} : ${ev.Data.State} : ${ev.Data.PercentComplete} % complete\n` + this.messages;
             }
         }
-        console.log(this.messages);
     }
 
     callApi() {

@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { EmployeeTaskService, ConnectionState, ChannelEvent } from "./employee/employee.task.service";
 import { Observable } from "rxjs/Observable";
+import { Http, HttpModule, Response } from '@angular/http';
 
 @Component({
     selector: 'tsi1',
@@ -18,6 +19,7 @@ export class AppComponent {
     toggleShowTable() {
         this.showTable = true;
         this.showOtro = false;
+        this.registrarAcceso();
     }
 
     toggleShowOtro() {
@@ -33,7 +35,8 @@ export class AppComponent {
     connectionState$: Observable<string>;
 
     constructor(
-        private channelService: EmployeeTaskService
+        private channelService: EmployeeTaskService,
+        private http: Http
     ) {
 
         // Let's wire up to the signalr observables
@@ -46,13 +49,16 @@ export class AppComponent {
             (error: any) => { console.error("errors$ error", error); }
         );
 
-        // Wire up a handler for the starting$ observable to log the
-        //  success/fail result
-        //
         this.channelService.starting$.subscribe(
             () => { console.log("signalr service has been started"); },
             () => { console.warn("signalr service failed to start!"); }
         );
+    }
+
+    registrarAcceso() {
+        this.http.get("http://localhost:9123/tasks/employees")
+            .map((res: Response) => res.json())
+            .subscribe((message: string) => { console.log(message); });
     }
 
     ngOnInit() {
@@ -62,17 +68,9 @@ export class AppComponent {
 
         this.channelService.start();
         this.channelService.sub("USUARIO_CONECTADO").map(response => {
-            /*switch (response.Name) {
-                case "user.connected":
-                    {
-                        alert();
-                        this.showNotification();
-                    }
-            }*/
-            //alert(response.Json);
-            if (response.Name === "user.connected") {
+            if (response.Name === "user.registred") {
                 this.showNotification();
             }
-        }).subscribe(response => console.log("incomming message at USUARIO_CONECTADO channel with Name:", response), error => console.log("Ha ocurrido un error: ", error), () => { });
+        }).subscribe(response => console.log(), error => console.log("Ha ocurrido un error: ", error), () => { });
     }
 }
