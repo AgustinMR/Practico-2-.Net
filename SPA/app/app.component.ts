@@ -62,13 +62,18 @@ export class AppComponent {
 
         this.channelService.start();
         this.channelService.sub("USUARIO_CONECTADO").map(response => {
-            switch (response.Name) {
+            /*switch (response.Name) {
                 case "user.connected":
                     {
                         alert();
                         this.showNotification();
                     }
+            }*/
+            //alert(response.Json);
+            if (response.Name === "user.connected") {
+                alert("VAPAI CABEZA");
+                this.showNotification();
             }
-        });
+        }).subscribe(response => console.log("incomming message at USUARIO_CONECTADO channel with Name:", response), error => console.log("Ha ocurrido un error: ", error), () => { });
     }
 }
