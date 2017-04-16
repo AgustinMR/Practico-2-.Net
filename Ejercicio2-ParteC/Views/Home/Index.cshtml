@@ -53,8 +53,14 @@
                 $.post("http://localhost:49222/api/employees/full?" + "Name=" + document.getElementById("name").value + "&StartDate=" + document.getElementById("startDate").value + "&Salary=" + document.getElementById("salary").value);
             }
             else {
-                $.post("http://localhost:49222/api/employees/part?" + "Name=" + document.getElementById("name").value + "&StartDate=" + document.getElementById("startDate").value + "&HourlyRate=" + document.getElementById("hourlyRate").value);
+                $.post("http://localhost:49222/api/employees/part?" + "Name=" + document.getElementById("name").value + "&StartDate=" + document.getElementById("startDate").value + "&HourlyRate=" + document.getElementById("hourlyrate").value);
             }
+            
+            document.getElementById("name").value = "";
+            document.getElementById("startDate").value = "";
+            document.getElementById("salary").value = "";
+            document.getElementById("hourlyrate").value = "";
+            alert("Empleado Ingresado con Exito!");
         };
     </script>
 </body>
