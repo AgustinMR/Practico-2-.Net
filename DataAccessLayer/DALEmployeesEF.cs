@@ -10,16 +10,19 @@ using System.Data.Entity.Infrastructure;
 namespace DataAccessLayer
 {
 
-    public class EmployeeDbContext : DbContext {
+    public class EmployeeDbContext : DbContext
+    {
         public EmployeeDbContext() : base("name=EmployeesConnectionString") { }
         public DbSet<Employee> Employees { get; set; }
     }
 
-    public class DALEmployeesEF : IDALEmployees {
+    public class DALEmployeesEF : IDALEmployees
+    {
 
         public void AddEmployee(Employee emp)
         {
-            if (emp != null) {
+            if (emp != null)
+            {
                 EmployeeDbContext context = new EmployeeDbContext();
                 context.Employees.Add(emp);
                 context.SaveChanges();
@@ -28,27 +31,27 @@ namespace DataAccessLayer
 
         public void DeleteEmployee(int id)
         {
-            Employee e = GetEmployee(id);
-            if (e != null) {
-                EmployeeDbContext context = new EmployeeDbContext();
-                context.Employees.Remove(e);
-                context.SaveChanges();
-            }
+            EmployeeDbContext context = new EmployeeDbContext();
+            Employee emp = (from d in context.Employees where d.EmployeeId == id select d).Single();
+            context.Employees.Remove(emp);
+            context.SaveChanges();
         }
 
         public void UpdateEmployee(Employee emp)
         {
-            Employee e = GetEmployee(emp.EmployeeId);
             EmployeeDbContext context = new EmployeeDbContext();
-            if (e != null)
+            Employee empBD = (from d in context.Employees where d.EmployeeId == emp.EmployeeId select d).Single();
+            empBD.Name = emp.Name;
+            empBD.StartDate = emp.StartDate;
+            if (emp.GetType() == typeof(FullTimeEmployee))
             {
-                context.Employees.Attach(emp);
-                var entry = context.Entry(e);
-                entry.State = EntityState.Modified;
-                entry.Property(empOld => empOld.Name).IsModified = true;
-                entry.Property(empOld => empOld.StartDate).IsModified = true;
-                context.SaveChanges();
+                ((FullTimeEmployee)empBD).Salary = ((FullTimeEmployee)emp).Salary;
             }
+            else
+            {
+                ((PartTimeEmployee)empBD).HourlyRate = ((PartTimeEmployee)emp).HourlyRate;
+            }
+            context.SaveChanges();
         }
 
         public List<Employee> GetAllEmployees()
