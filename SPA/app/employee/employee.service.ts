@@ -15,10 +15,10 @@ export class EmployeeService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         if (isFullTime) {
-            return this.http.post("http://localhost:49222/api/employees/full?" + "Name=" + Name + "&StartDate=" + StartDate + "&Salary=" + Salary, {}, options).map(response => alert(response.json()));
+            return this.http.post("http://localhost:49222/api/employees/full?" + "Name=" + Name + "&StartDate=" + StartDate + "&Salary=" + Salary, {}, options).map(response => { });
         }
         else {
-            return this.http.post("http://localhost:49222/api/employees/part?" + "Name=" + Name + "&StartDate=" + StartDate + "&HourlyRate=" + HourlyRate, {}, options).map(response => response.json());
+            return this.http.post("http://localhost:49222/api/employees/part?" + "Name=" + Name + "&StartDate=" + StartDate + "&HourlyRate=" + HourlyRate, {}, options).map(response => { });
         }
     }
 
