@@ -27,7 +27,7 @@ export class AppComponent {
 
     showNotification() {
         this.hayEvento = true;
-        setTimeout(() => { this.hayEvento = false; }, 300);
+        setTimeout(() => { this.hayEvento = false; }, 5000);
     }
 
     connectionState$: Observable<string>;
@@ -71,7 +71,6 @@ export class AppComponent {
             }*/
             //alert(response.Json);
             if (response.Name === "user.connected") {
-                alert("VAPAI CABEZA");
                 this.showNotification();
             }
         }).subscribe(response => console.log("incomming message at USUARIO_CONECTADO channel with Name:", response), error => console.log("Ha ocurrido un error: ", error), () => { });
