@@ -38,13 +38,8 @@ export class EmployeeTaskCompontent implements OnInit {
                 console.warn("Attempt to join channel failed!", error);
             }
         );*/
-        /*alert(this.channelService.starting$);
-        this.channelService.sub("USUARIO_CONECTADO").map(response => {
-            alert(response);
-            if (response.Name === "user.subscribed") {
-                alert();
-            }
-        }).subscribe(response => console.log("incomming message at USUARIO_CONECTADO channel with Name:", response), error => console.log("Ha ocurrido un error: ", error), () => { });*/
+        this.channelService.sub("USUARIO_CONECTADO").map(response => { 
+        }).subscribe(response => console.log("Message recibed on EmployeeTaskComponent ngOnInit method"), error => console.log("Ha ocurrido un error: ", error), () => { });
     }
 
 

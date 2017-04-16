@@ -71,6 +71,6 @@ export class AppComponent {
             if (response.Name === "user.registred") {
                 this.showNotification();
             }
-        }).subscribe(response => console.log(), error => console.log("Ha ocurrido un error: ", error), () => { });
+        }).subscribe(response => console.log("incomming message at USUARIO_CONECTADO channel with Name:", response), error => console.log("Ha ocurrido un error: ", error), () => { });
     }
 }
